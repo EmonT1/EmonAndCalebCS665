@@ -21,6 +21,7 @@ namespace SQLCRUD
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// SQL wpf program to base out project on
     public partial class MainWindow : Window
     {
         public MainWindow()
