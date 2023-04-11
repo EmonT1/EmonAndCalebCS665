@@ -1,2 +1,7 @@
-# EmonAndCalebCS665
-EmonAndCalebCS665 is the Project for CS 665 by Dr Lu
+# Member Names & GitID:
+
+Caleb Miller - 
+Emon Tehrani - 
+
+# Link to video demonstration video:
+[Demonstration](https://youtu.be/TvtQsp7Zr6k)  
