@@ -6,17 +6,30 @@ CREATE TABLE [dbo].[Employee]
     [Last Name] NVARCHAR(MAX) NOT NULL, 
     [Deparment] NVARCHAR(MAX) NOT NULL
 );
-CREATE TABLE [dbo].[TimeCards]
-(
-    [TCID] INT NOT NULL PRIMARY KEY, 
-    [EmployeeID] INT NOT NULL, 
-    [WeekEndingDate] DATE NOT NULL, 
-    [TotalHours] INT NOT NULL, 
-    CONSTRAINT [FK_TimeCards_Employee]
-    FOREIGN KEY ([EmployeeID]) REFERENCES [Employee]([EID])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+CREATE TABLE [dbo].[TimeCards] (
+    [TCID]           INT  NOT NULL,
+    [EmployeeID]     INT  NOT NULL,
+    [WeekEndingDate] DATE NOT NULL,
+    [TotalHours]     INT  NOT NULL,
+    PRIMARY KEY CLUSTERED ([TCID] ASC),
+    CONSTRAINT [FK_TimeCards_Employee] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employee] ([EID]) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+GO
+
+CREATE TRIGGER [dbo].[Trigger_TimeCards]
+    ON TimeCards
+	AFTER UPDATE 
+	AS 
+	BEGIN
+		IF NOT EXISTS (SELECT 1 FROM Employee WHERE EID IN (SELECT EID FROM inserted))
+		BEGIN
+			RAISERROR('Employee ID not found in Employee table', 16, 1);
+			ROLLBACK TRANSACTION;
+		END
+	END;
+
 CREATE TABLE [dbo].[TimeEntries]
 (
     [TEID] INT NOT NULL PRIMARY KEY, 
