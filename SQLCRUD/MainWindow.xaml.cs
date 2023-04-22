@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using System.Runtime.Remoting.Contexts;
+using System.Windows.Markup;
 
 namespace SQLCRUD
 {
@@ -30,8 +32,7 @@ namespace SQLCRUD
             Loadgrid();
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Selene;Integrated Security=True");
-
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\ProjectModels;Initial Catalog=Example;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         public void clear()
         {
             xcoord.Clear();

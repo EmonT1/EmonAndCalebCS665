@@ -14,7 +14,10 @@
         <DataGrid x:Name="coordgrid" HorizontalAlignment="Center" Height="123" Margin="0,79,0,0" VerticalAlignment="Top" Width="368" />
         <Button x:Name="Insertbtn" Content="Insert Data" HorizontalAlignment="Left" Height="32" Margin="67,253,0,0" VerticalAlignment="Top" Width="94" Click="Insertbtn_Click"/>
         <Button x:Name="Updatebtn" Content="Update" HorizontalAlignment="Left" Height="32" Margin="216,253,0,0" VerticalAlignment="Top" Width="94" Click="Updatebtn_Click"/>
-        <Button x:Name="Deletebtn" Content="Delete" HorizontalAlignment="Center" Height="32" Margin="0,253,0,0" VerticalAlignment="Top" Width="94" Click="Deletebtn_Click"/>
+        <Button x:Name="Deletebtn" Content="Delete"
+                HorizontalAlignment="Center" Height="32"
+                Margin="0,253,0,0" VerticalAlignment="Top"
+                Width="94" Click="Deletebtn_Click"/>
         <Button x:Name="clearbtn" Content="Clear" HorizontalAlignment="Left" Height="32" Margin="490,253,0,0" VerticalAlignment="Top" Width="94" Click="clearbtn_Click"/>
         <Label Content="Delete/Update by ID:" HorizontalAlignment="Left" Margin="7,141,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="DelID" HorizontalAlignment="Left" Height="20" Margin="128,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
