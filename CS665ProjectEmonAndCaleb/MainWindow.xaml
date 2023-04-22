@@ -1,0 +1,64 @@
+﻿<Window x:Class="CS665ProjectEmonAndCaleb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CS665ProjectEmonAndCaleb"
+        mc:Ignorable="d"
+        Background="Black"
+        Title="MainWindow" Height="550" Width="400">
+    <Grid>
+        <TabControl Background="blue" TabStripPlacement="Top" >
+            <TabItem Header="C# input">
+                <Grid Background="Green">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="79*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="218*"/>
+                        <ColumnDefinition Width="79*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="202*"/>
+                        <RowDefinition Height="61*"/>
+                        <RowDefinition Height="101*"/>
+                        <RowDefinition Height="102*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=100}" Margin="0,20,0,60" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1"  Grid.Row="2" TextWrapping="Wrap" Text="TextBox" Grid.ColumnSpan="2" Margin="0,61,0,0" Grid.RowSpan="2" />
+                    <Button Grid.Column="1" Content="Button"  Grid.Row="3" Grid.ColumnSpan="2" Margin="0,101,0,0" Grid.RowSpan="2" />
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="SQL database" >
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF9E2424" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.25*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.10*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.10*"/>
+                    </Grid.RowDefinitions>
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
