@@ -43,9 +43,10 @@ CREATE TABLE [dbo].[TimeEntries]
     CONSTRAINT [FK_TimeEntries_Tasks] 
     FOREIGN KEY ([TaskID]) REFERENCES [Tasks]([TaskID])
 );
-CREATE TABLE [dbo].[Tasks]
-(
-    [TaskID] INT NOT NULL PRIMARY KEY, 
-    [Task Description] NVARCHAR(MAX) NOT NULL
+CREATE TABLE [dbo].[Tasks] (
+    [TaskID]           INT            NOT NULL,
+    [Task Description] NVARCHAR (MAX) NOT NULL,
+    [Priority Level] INT NOT NULL, 
+    [Task Lead] NVARCHAR(MAX) NOT NULL, 
+    PRIMARY KEY CLUSTERED ([TaskID] ASC)
 );
-
