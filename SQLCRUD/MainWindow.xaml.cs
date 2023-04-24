@@ -29,179 +29,72 @@ namespace SQLCRUD
         public MainWindow()
         {
             InitializeComponent();
-            SQLTableComboBox.ItemsSource = tablesList;
-            //Loadgrid();
         }
 
-        public static List<string> tablesList = new List<string>() { "Employee", "Tasks", "TimeCards", "TimeEntries" };
+        public static List<string> tablesList = new List<string>() { "Table 1", "Table 2", "Table 3" };
 
-        public string chosenIndex;
 
-        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=665Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); //Emon con string
-        public void clear()
-        {
 
-            //SQLTableComboBox.Clear()
-            ycoord.Clear();
-            DelID.Clear();
-        }
+        SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=Project1;Integrated Security=True");
 
+        private string selectedTableName;
         private void SQLTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox sqlCombo = sender as ComboBox;
-
-            string selected = sqlCombo.SelectedItem as string;
-
-            if (selected == "Employee")
+            ComboBox comboBox = (ComboBox)sender;
+            ComboBoxItem Selected = comboBox.SelectedItem as ComboBoxItem;
+            DataTable dataTable = new DataTable();
+            if (Selected != null)
             {
-
-                SqlCommand command = new SqlCommand("select * from [Employee], conn");
-                DataTable dt = new DataTable();
-                conn.Open();
-                SqlDataReader sdr = command.ExecuteReader();
-                dt.Load(sdr);
-                conn.Close();
-                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
-
+                selectedTableName = Selected.Content.ToString();
+                Loadgrid(selectedTableName);                
             }
-
-            else if (selected == "Tasks")
-            {
-
-                SqlCommand command = new SqlCommand("select * from [Tasks], conn");
-                DataTable dt = new DataTable();
-                conn.Open();
-                SqlDataReader sdr = command.ExecuteReader();
-                dt.Load(sdr);
-                conn.Close();
-                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
-
-            }
-            else if (selected == "TimeCards")
-            {
-
-                SqlCommand command = new SqlCommand("select * from [TimeCards], conn");
-                DataTable dt = new DataTable();
-                conn.Open();
-                SqlDataReader sdr = command.ExecuteReader();
-                dt.Load(sdr);
-                conn.Close();
-                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
-
-            }
-
-            else if (selected == "TimeEntries")
-            {
-                SqlCommand command = new SqlCommand("select * from [TimeEntries], conn");
-                DataTable dt = new DataTable();
-                conn.Open();
-                SqlDataReader sdr = command.ExecuteReader();
-                dt.Load(sdr);
-                conn.Close();
-                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
-
-            }
-
 
 
         }
-        public void Loadgrid()
+
+        public void Loadgrid(string TableName)
         {
-
-
-
-
-            SqlCommand command = new SqlCommand("select * from [Employee], conn");
-            DataTable dt = new DataTable();
+            SqlCommand command = new SqlCommand("select * from " + TableName, conn);
+            DataTable dataTable = new DataTable();
             conn.Open();
-            SqlDataReader sdr = command.ExecuteReader();
-            dt.Load(sdr);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(dataTable);
             conn.Close();
-            SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+            SQLTableInfoInDataGrid.ItemsSource = dataTable.DefaultView;
 
         }
-        private void clearbtn_Click(object sender, RoutedEventArgs e)
+        public void ClearFields()
         {
-            clear();
-        }
-        public bool isValid()
-        {
-            if (SQLTableComboBox.Text == string.Empty && ycoord.Text == string.Empty)
-            {
-                MessageBox.Show("Coordinates are required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
-        }
-        private void Insertbtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (isValid())
-                {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO [Table] VALUES (@xcoord, @ycoord)", conn);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@xcoord", int.Parse(SQLTableComboBox.Text));
-                    cmd.Parameters.AddWithValue("@ycoord", int.Parse(ycoord.Text));
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    Loadgrid();
-                    MessageBox.Show("Successfully added coordinate", "saved", MessageBoxButton.OK, MessageBoxImage.Information);
-                    clear();
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            DelID.Clear();
         }
 
         private void Deletebtn_Click(object sender, RoutedEventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("delete from [Table] where  ID = " + DelID.Text, conn);
-            try
+            if (selectedTableName != null && selectedTableName == "Employee")
             {
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("coordinate has been deleted", "deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                string query = "DELETE FROM " + selectedTableName + " WHERE EID = " + DelID.Text;
+                SqlCommand command = new SqlCommand(query, conn);
+                conn.Open();
+                command.ExecuteNonQuery();
                 conn.Close();
-                clear();
-                Loadgrid();
-                conn.Close();
+                Loadgrid(selectedTableName);
+                ClearFields();
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Not Deleted" + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+        }
+
+        private void Insertbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void clearbtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearFields();
         }
 
         private void Updatebtn_Click(object sender, RoutedEventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("update [Table] set xcoord = '" + SQLTableComboBox.Text + "', ycoord = '" + ycoord.Text + "' WHERE ID = '" + DelID.Text + "'", conn);
-            try
-            {
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Coord updated", "updated", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-                clear();
-                Loadgrid();
-            }
+
         }
-
-
     }
 }
