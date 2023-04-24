@@ -81,9 +81,19 @@ namespace SQLCRUD
                 ClearFields();
             }
         }
-
+        private void Window_closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Loadgrid(selectedTableName);
+        }
         private void Insertbtn_Click(object sender, RoutedEventArgs e)
         {
+            if (selectedTableName != null && selectedTableName == "Employee")
+            {
+                EmployeeInsert employeeInsert = new EmployeeInsert();
+                employeeInsert.Owner = this;
+                employeeInsert.Closing += Window_closing;
+                employeeInsert.ShowDialog();
+            }
 
         }
 
