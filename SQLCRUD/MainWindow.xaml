@@ -7,20 +7,95 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="X Coord:" HorizontalAlignment="Left" Margin="67,79,0,0" VerticalAlignment="Top"/>
-        <Label Content="Y Coord:" HorizontalAlignment="Left" Margin="67,110,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name ="xcoord" HorizontalAlignment="Left" Height="20" Margin="128,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
-        <TextBox x:Name ="ycoord" HorizontalAlignment="Left" Height="20" Margin="128,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
-        <DataGrid x:Name="coordgrid" HorizontalAlignment="Center" Height="123" Margin="0,79,0,0" VerticalAlignment="Top" Width="368" />
-        <Button x:Name="Insertbtn" Content="Insert Data" HorizontalAlignment="Left" Height="32" Margin="67,253,0,0" VerticalAlignment="Top" Width="94" Click="Insertbtn_Click"/>
-        <Button x:Name="Updatebtn" Content="Update" HorizontalAlignment="Left" Height="32" Margin="216,253,0,0" VerticalAlignment="Top" Width="94" Click="Updatebtn_Click"/>
-        <Button x:Name="Deletebtn" Content="Delete"
-                HorizontalAlignment="Center" Height="32"
-                Margin="0,253,0,0" VerticalAlignment="Top"
-                Width="94" Click="Deletebtn_Click"/>
-        <Button x:Name="clearbtn" Content="Clear" HorizontalAlignment="Left" Height="32" Margin="490,253,0,0" VerticalAlignment="Top" Width="94" Click="clearbtn_Click"/>
-        <Label Content="Delete/Update by ID:" HorizontalAlignment="Left" Margin="7,141,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name ="DelID" HorizontalAlignment="Left" Height="20" Margin="128,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Tables:     " HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                           />
+
+                    <ComboBox x:Name ="SQLTableComboBox" HorizontalAlignment="Left"
+                              Height="30" Width="200" 
+                              VerticalAlignment="Top" />
+                                    
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Somthing" 
+                           HorizontalAlignment="Left" 
+                          VerticalAlignment="Top"/>
+
+                    <TextBox x:Name ="ycoord" TextWrapping="Wrap" 
+                             Height="30" Width="200" Text="" />                             
+                                
+                </StackPanel>
+
+            </StackPanel>
+
+            <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" 
+                    BorderThickness="3">
+                
+                <DataGrid x:Name="SQLTableInfoInDataGrid" />    
+                       
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <StackPanel Orientation="Horizontal">
+        
+                <Button x:Name="Insertbtn" Content="Insert Data" 
+                        HorizontalAlignment="Left" Height="32"
+                         VerticalAlignment="Top" 
+                        Width="94" Click="Insertbtn_Click"/>
+        
+                <Button x:Name="Updatebtn" Content="Update" 
+                        HorizontalAlignment="Left" Height="32" 
+                        VerticalAlignment="Top" 
+                        Width="94" Click="Updatebtn_Click"/>
+        
+                <Button x:Name="Deletebtn" Content="Delete"
+                        HorizontalAlignment="Center" Height="32"
+                        VerticalAlignment="Top"
+                        Width="94" Click="Deletebtn_Click"/>
+        
+                <Button x:Name="clearbtn" Content="Clear" 
+                        HorizontalAlignment="Left" Height="32"
+                         VerticalAlignment="Top" 
+                        Width="94" Click="clearbtn_Click"/>
+            
+                <Label Content="Delete/Update by ID:" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        
+                <TextBox x:Name ="DelID" HorizontalAlignment="Left"
+                         Height="20" TextWrapping="Wrap"
+                         Text="" VerticalAlignment="Top" Width="66"/>
+                            
+            </StackPanel>
+        </Grid>
+
+        
+
+
+        
+
 
     </Grid>
 </Window>
