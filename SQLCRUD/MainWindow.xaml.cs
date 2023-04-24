@@ -47,13 +47,13 @@ namespace SQLCRUD
 
         public void Loadgrid()
         {
-            SqlCommand command = new SqlCommand("select * from [Table]", conn);
-            DataTable dt = new DataTable();
-            conn.Open();
-            SqlDataReader sdr = command.ExecuteReader();
-            dt.Load(sdr);
-            conn.Close();
-            SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+            //SqlCommand command = new SqlCommand("select * from [Table]", conn);
+            //DataTable dt = new DataTable();
+            //conn.Open();
+            //SqlDataReader sdr = command.ExecuteReader();
+            //dt.Load(sdr);
+            //conn.Close();
+            //SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
 
         }
         private void clearbtn_Click(object sender, RoutedEventArgs e)
