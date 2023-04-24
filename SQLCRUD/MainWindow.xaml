@@ -42,7 +42,12 @@
 
                     <ComboBox x:Name ="SQLTableComboBox" HorizontalAlignment="Left"
                               Height="30" Width="200" 
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Top" SelectionChanged="SQLTableComboBox_SelectionChanged">
+                        <ComboBoxItem>Employee</ComboBoxItem>
+                        <ComboBoxItem>TimeCards</ComboBoxItem>
+                        <ComboBoxItem>TimeEntries</ComboBoxItem>
+                        <ComboBoxItem>Tasks</ComboBoxItem>
+                    </ComboBox>
 
                 </StackPanel>
 
