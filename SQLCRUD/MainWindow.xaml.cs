@@ -33,7 +33,7 @@ namespace SQLCRUD
             //Loadgrid();
         }
 
-        public static List<string> tablesList = new List<string>() { "Employee", "Tasks", "TimeCards", "TimeEntries"  };
+        public static List<string> tablesList = new List<string>() { "Employee", "Tasks", "TimeCards", "TimeEntries" };
 
         public string chosenIndex;
 
@@ -46,7 +46,7 @@ namespace SQLCRUD
             DelID.Clear();
         }
 
-       private void SQLTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SQLTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox sqlCombo = sender as ComboBox;
 
@@ -90,7 +90,7 @@ namespace SQLCRUD
 
             }
 
-            else if (selected == "TimeEntries") 
+            else if (selected == "TimeEntries")
             {
                 SqlCommand command = new SqlCommand("select * from [TimeEntries], conn");
                 DataTable dt = new DataTable();
@@ -110,7 +110,7 @@ namespace SQLCRUD
 
 
 
-            
+
             SqlCommand command = new SqlCommand("select * from [Employee], conn");
             DataTable dt = new DataTable();
             conn.Open();
@@ -126,7 +126,7 @@ namespace SQLCRUD
         }
         public bool isValid()
         {
-            if(SQLTableComboBox.Text == string.Empty && ycoord.Text == string.Empty)
+            if (SQLTableComboBox.Text == string.Empty && ycoord.Text == string.Empty)
             {
                 MessageBox.Show("Coordinates are required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -171,7 +171,7 @@ namespace SQLCRUD
                 Loadgrid();
                 conn.Close();
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Not Deleted" + ex.Message);
             }
@@ -190,7 +190,7 @@ namespace SQLCRUD
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Coord updated", "updated", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -202,6 +202,6 @@ namespace SQLCRUD
             }
         }
 
- 
+
     }
 }
