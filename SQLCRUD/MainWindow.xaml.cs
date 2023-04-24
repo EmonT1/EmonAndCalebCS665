@@ -29,31 +29,95 @@ namespace SQLCRUD
         public MainWindow()
         {
             InitializeComponent();
-            Loadgrid();
+            SQLTableComboBox.ItemsSource = tablesList;
+            //Loadgrid();
         }
 
-        public static List<string> tablesList = new List<string>() { "Table 1", "Table 2", "Table 3" };
-       
+        public static List<string> tablesList = new List<string>() { "Employee", "Tasks", "TimeCards", "TimeEntries"  };
 
+        public string chosenIndex;
 
-        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\ProjectModels;Initial Catalog=Example;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=665Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); //Emon con string
         public void clear()
         {
-            SQLTableComboBox.ItemsSource = tablesList;
+
             //SQLTableComboBox.Clear()
             ycoord.Clear();
             DelID.Clear();
         }
 
+       private void SQLTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox sqlCombo = sender as ComboBox;
+
+            string selected = sqlCombo.SelectedItem as string;
+
+            if (selected == "Employee")
+            {
+
+                SqlCommand command = new SqlCommand("select * from [Employee], conn");
+                DataTable dt = new DataTable();
+                conn.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                dt.Load(sdr);
+                conn.Close();
+                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+
+            }
+
+            else if (selected == "Tasks")
+            {
+
+                SqlCommand command = new SqlCommand("select * from [Tasks], conn");
+                DataTable dt = new DataTable();
+                conn.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                dt.Load(sdr);
+                conn.Close();
+                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+
+            }
+            else if (selected == "TimeCards")
+            {
+
+                SqlCommand command = new SqlCommand("select * from [TimeCards], conn");
+                DataTable dt = new DataTable();
+                conn.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                dt.Load(sdr);
+                conn.Close();
+                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+
+            }
+
+            else if (selected == "TimeEntries") 
+            {
+                SqlCommand command = new SqlCommand("select * from [TimeEntries], conn");
+                DataTable dt = new DataTable();
+                conn.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                dt.Load(sdr);
+                conn.Close();
+                SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+
+            }
+
+
+
+        }
         public void Loadgrid()
         {
-            //SqlCommand command = new SqlCommand("select * from [Table]", conn);
-            //DataTable dt = new DataTable();
-            //conn.Open();
-            //SqlDataReader sdr = command.ExecuteReader();
-            //dt.Load(sdr);
-            //conn.Close();
-            //SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
+
+
+
+            
+            SqlCommand command = new SqlCommand("select * from [Employee], conn");
+            DataTable dt = new DataTable();
+            conn.Open();
+            SqlDataReader sdr = command.ExecuteReader();
+            dt.Load(sdr);
+            conn.Close();
+            SQLTableInfoInDataGrid.ItemsSource = dt.DefaultView;
 
         }
         private void clearbtn_Click(object sender, RoutedEventArgs e)
@@ -137,5 +201,7 @@ namespace SQLCRUD
                 Loadgrid();
             }
         }
+
+ 
     }
 }

@@ -42,7 +42,7 @@
 
                     <ComboBox x:Name ="SQLTableComboBox" HorizontalAlignment="Left"
                               Height="30" Width="200" 
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Top"  SelectionChanged="SQLTableComboBox_SelectionChanged"/>
 
                 </StackPanel>
 
