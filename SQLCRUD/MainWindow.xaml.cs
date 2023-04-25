@@ -108,12 +108,6 @@ namespace SQLCRUD
             }
 
         }
-
-        private void clearbtn_Click(object sender, RoutedEventArgs e)
-        {
-            ClearFields();
-        }
-
         private void Updatebtn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -122,6 +116,12 @@ namespace SQLCRUD
         private void JoinEmployeeTimeCard(object sender, RoutedEventArgs e)
         {
             string query = "SELECT Employee.EID, Employee.[First Name], TimeCards.TCID, TimeCards.WeekEndingDate, TimeCards.TotalHours FROM Employee INNER JOIN TimeCards ON Employee.EID = TimeCards.EmployeeID;";
+            LoadJoinGrid(query);
+        }
+
+        private void JoinTimeCardTimeEntries(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT TimeCards.TCID, TimeCards.EmployeeID, TimeEntries.[Date], TimeEntries.TaskID FROM TimeCards INNER JOIN TimeEntries ON TimeCards.TCID = TimeEntries.TimeCardID";
             LoadJoinGrid(query);
         }
     }

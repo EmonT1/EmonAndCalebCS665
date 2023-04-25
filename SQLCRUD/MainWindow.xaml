@@ -53,6 +53,7 @@
 
                 <StackPanel Orientation="Horizontal"/>
                 <Button Content="Join Employee and TimeCard" Height="28" Width="163" HorizontalAlignment="Left" Margin="0 20 0 0 " Click="JoinEmployeeTimeCard"/>
+                <Button Content="Join TimeCards and TimeEntries" Height="28" Width="181" Click="JoinTimeCardTimeEntries" HorizontalAlignment="Left"  Margin="0 20 0 0 " />
 
             </StackPanel>
 
