@@ -40,7 +40,6 @@ namespace SQLCRUD
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
-            
             this.Close();
             
             
