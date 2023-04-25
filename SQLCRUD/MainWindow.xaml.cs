@@ -17,6 +17,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Markup;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace SQLCRUD
 {
@@ -48,13 +50,13 @@ namespace SQLCRUD
             if (Selected != null)
             {
                 selectedTableName = Selected.Content.ToString();
-                Loadgrid(selectedTableName);                
+                LoadTable(selectedTableName);                
             }
 
 
         }
 
-        public void Loadgrid(string TableName)
+        public void LoadTable(string TableName)
         {
             SqlCommand command = new SqlCommand("select * from " + TableName, conn);
             DataTable dataTable = new DataTable();
@@ -64,6 +66,16 @@ namespace SQLCRUD
             conn.Close();
             SQLTableInfoInDataGrid.ItemsSource = dataTable.DefaultView;
 
+        }
+        public void LoadJoinGrid(string query)
+        {
+            SqlCommand command = new SqlCommand(query, conn);
+            DataTable dataTable = new DataTable();
+            conn.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(dataTable);
+            conn.Close();
+            SQLTableInfoInDataGrid.ItemsSource = dataTable.DefaultView;
         }
         public void ClearFields()
         {
@@ -79,13 +91,13 @@ namespace SQLCRUD
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
-                Loadgrid(selectedTableName);
+                LoadTable(selectedTableName);
                 ClearFields();
             }
         }
-        private void Window_closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_closing(object sender, CancelEventArgs e)
         {
-            Loadgrid(selectedTableName);
+            LoadTable(selectedTableName);
         }
         private void Insertbtn_Click(object sender, RoutedEventArgs e)
         {
@@ -98,15 +110,21 @@ namespace SQLCRUD
             }
 
         }
-
-        private void clearbtn_Click(object sender, RoutedEventArgs e)
-        {
-            ClearFields();
-        }
-
         private void Updatebtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void JoinEmployeeTimeCard(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT Employee.EID, Employee.[First Name], TimeCards.TCID, TimeCards.WeekEndingDate, TimeCards.TotalHours FROM Employee INNER JOIN TimeCards ON Employee.EID = TimeCards.EmployeeID;";
+            LoadJoinGrid(query);
+        }
+
+        private void JoinTimeCardTimeEntries(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT TimeCards.TCID, TimeCards.EmployeeID, TimeEntries.[Date], TimeEntries.TaskID FROM TimeCards INNER JOIN TimeEntries ON TimeCards.TCID = TimeEntries.TimeCardID";
+            LoadJoinGrid(query);
         }
     }
 }
