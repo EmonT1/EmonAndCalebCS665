@@ -1,7 +1,7 @@
 # Member Names & GitID:
 
-Caleb Miller - 
-Emon Tehrani - 
+Caleb Miller - C-Miller-01
+Emon Tehrani - etehrani
 
 # Link to video demonstration video:
-[Demonstration](https://youtu.be/TvtQsp7Zr6k)  
+[Demonstration](https://www.youtube.com/watch?v=HPWQhNUP3Xo)  
