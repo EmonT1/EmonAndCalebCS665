@@ -31,7 +31,8 @@
                     <Label Content="Last Name " HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
                     <TextBox Name="Departmenttxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
                     <Label Content="Department" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
-                   
+                    <Button x:Name="Eupdatebtn" Content="Update" HorizontalAlignment="Left" Height="22" Margin="332,168,0,0" VerticalAlignment="Top" Width="87" Click="UpdateEntry"/>
+
                 </Grid>
 
 
@@ -39,18 +40,23 @@
             <TabItem Header="TimeCards">
 
                 <Grid>
-                    <TextBox Name="TCIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-                    <Button  x:Name="InsertbtnTC" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
-                    <Label Content="TCID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="45"/>
-                    <TextBox Name="TCEIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-                    <Label Content="EmployeeID" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77"/>
-                    <TextBox Name="WeekEndingDatetxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-                    <Label Content="Week Ending Date" HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
-                    <TextBox Name="TotalHourstxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-                    <Label Content="Total Hours" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="TCIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2"/>
+                    <Button  x:Name="InsertbtnTC" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click" Grid.ColumnSpan="2"/>
+                    <Label Content="TCID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="45" Grid.ColumnSpan="2"/>
+                    <TextBox Name="TCEIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2"/>
+                    <Label Content="EmployeeID" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
+                    <TextBox Name="WeekEndingDatetxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2"/>
+                    <Label Content="Week Ending Date" HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
+                    <TextBox Name="TotalHourstxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2"/>
+                    <Label Content="Total Hours" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
+                    <Button x:Name="TCupdatebtn" Content="Update" HorizontalAlignment="Left" Height="22" Margin="340,168,0,0" VerticalAlignment="Top" Width="87" Click="UpdateEntry" Grid.ColumnSpan="2"/>
 
                 </Grid>
-                
+
             </TabItem>
             <TabItem Header="TimeEntries">
                 <Grid>
@@ -67,6 +73,7 @@
                     <Label Content="End Time" HorizontalAlignment="Left" Height="26" Margin="137,203,0,0" VerticalAlignment="Top" Width="77"/>
                     <TextBox Name="TaskID" HorizontalAlignment="Left" Height="26" Margin="46,238,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
                     <Label Content="Task ID" HorizontalAlignment="Left" Height="26" Margin="135,238,0,0" VerticalAlignment="Top" Width="77"/>
+                    <Button Content="Update" HorizontalAlignment="Left" Height="22" Margin="340,168,0,0" VerticalAlignment="Top" Width="79" Click="UpdateEntry"/>
 
                 </Grid>
 
@@ -82,6 +89,7 @@
                     <Label Content="Priority Level" HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
                     <TextBox Name="TaskLeadtxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
                     <Label Content="Task Lead" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+                    <Button Content="Update" HorizontalAlignment="Left" Height="22" Margin="337,168,0,0" VerticalAlignment="Top" Width="73" Click="UpdateEntry"/>
 
                 </Grid>
 
@@ -89,8 +97,8 @@
 
 
         </TabControl>
-        
-        
+
+
 
     </Grid>
 </Window>

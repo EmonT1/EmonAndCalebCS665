@@ -37,8 +37,8 @@ namespace SQLCRUD
 
 
 
-        //SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=Project1;Integrated Security=True");
-        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=665Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");//Emon
+        SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=Project1;Integrated Security=True");
+        //SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=665Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");//Emon
 
         
         private string selectedTableName;
@@ -100,14 +100,11 @@ namespace SQLCRUD
             LoadTable(selectedTableName);
         }
         private void Insertbtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (selectedTableName != null && selectedTableName == "Employee")
-            {
+        {            
                 EmployeeInsert employeeInsert = new EmployeeInsert();
                 employeeInsert.Owner = this;
                 employeeInsert.Closing += Window_closing;
                 employeeInsert.ShowDialog();
-            }
 
         }
         private void Updatebtn_Click(object sender, RoutedEventArgs e)
