@@ -35,8 +35,10 @@ namespace SQLCRUD
 
 
 
-        SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=Project1;Integrated Security=True");
+        //SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=Project1;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=665Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");//Emon
 
+        
         private string selectedTableName;
         private void SQLTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -6,19 +6,91 @@
         xmlns:local="clr-namespace:SQLCRUD"
         mc:Ignorable="d"
         Title="EmployeeInsert" Height="369" Width="599">
-    <Grid Margin="0,0,0,-6">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="285*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Name="EIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-        <Button  x:Name="Insertbtn" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
-        <Label Content="EID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="45"/>
-        <TextBox Name="Fnametxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-        <Label Content="First Name" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox Name="Lnametxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-        <Label Content="Last Name " HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox Name="Departmenttxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
-        <Label Content="Department" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+
+        <!--<ComboBoxItem>Employee</ComboBoxItem>
+        <ComboBoxItem>TimeCards</ComboBoxItem>
+        <ComboBoxItem>TimeEntries</ComboBoxItem>
+        <ComboBoxItem>Tasks</ComboBoxItem>-->
+
+
+        <TabControl x:Name="TabConTables" SelectionChanged="TabControl_SelectionChanged">
+
+            <TabItem Header="Employee">
+
+                <Grid>
+                    <TextBox Name="EIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Button  x:Name="Insertbtn" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
+                    <Label Content="EID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="45"/>
+                    <TextBox Name="Fnametxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="First Name" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="Lnametxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Last Name " HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="Departmenttxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Department" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+                   
+                </Grid>
+
+
+            </TabItem>
+            <TabItem Header="TimeCards">
+
+                <Grid>
+                    <TextBox Name="TCIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Button  x:Name="InsertbtnTC" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
+                    <Label Content="TCID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="45"/>
+                    <TextBox Name="TCEIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="EmployeeID" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="WeekEndingDatetxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Week Ending Date" HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="TotalHourstxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Total Hours" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+
+                </Grid>
+                
+            </TabItem>
+            <TabItem Header="TimeEntries">
+                <Grid>
+                    <TextBox Name="TEIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Button  x:Name="InsertbtnTE" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
+                    <Label Content="Time Entries ID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="93"/>
+                    <TextBox Name="TimeCardIDtxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Time Card ID" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="Datetxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Date " HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="StartTimetxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Start Time" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="EndTimetxt" HorizontalAlignment="Left" Height="26" Margin="47,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="End Time" HorizontalAlignment="Left" Height="26" Margin="137,203,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="TaskID" HorizontalAlignment="Left" Height="26" Margin="46,238,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Task ID" HorizontalAlignment="Left" Height="26" Margin="135,238,0,0" VerticalAlignment="Top" Width="77"/>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Tasks">
+                <Grid>
+                    <TextBox Name="Task_ID" HorizontalAlignment="Left" Height="26" Margin="48,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Button  x:Name="InsertbtnTask" Content="Insert" HorizontalAlignment="Left" Height="22" Margin="235,168,0,0" VerticalAlignment="Top" Width="83" Click="Insertbtn_click"/>
+                    <Label Content="Task ID" HorizontalAlignment="Left" Height="26" Margin="139,52,0,0" VerticalAlignment="Top" Width="48"/>
+                    <TextBox Name="TaskDescriptiontxt" HorizontalAlignment="Left" Height="26" Margin="48,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Task Description" HorizontalAlignment="Left" Height="26" Margin="139,89,0,0" VerticalAlignment="Top" Width="108"/>
+                    <TextBox Name="PriorityLeveltxt" HorizontalAlignment="Left" Height="26" Margin="48,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Priority Level" HorizontalAlignment="Left" Height="26" Margin="139,127,0,0" VerticalAlignment="Top" Width="77"/>
+                    <TextBox Name="TaskLeadtxt" HorizontalAlignment="Left" Height="26" Margin="48,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86"/>
+                    <Label Content="Task Lead" HorizontalAlignment="Left" Height="26" Margin="139,164,0,0" VerticalAlignment="Top" Width="77"/>
+
+                </Grid>
+
+            </TabItem>
+
+
+        </TabControl>
+        
+        
 
     </Grid>
 </Window>

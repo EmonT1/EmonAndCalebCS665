@@ -91,11 +91,6 @@
                             VerticalAlignment="Top"
                             Width="94" Click="Deletebtn_Click"/>
 
-                    <Button x:Name="clearbtn" Content="Clear" 
-                            HorizontalAlignment="Left" Height="32"
-                             VerticalAlignment="Top" 
-                            Width="94" Click="clearbtn_Click"/>
-
 
                 </StackPanel>
 
@@ -109,7 +104,7 @@
                         <TextBox x:Name ="DelID" HorizontalAlignment="Left"
                                  Height="20" TextWrapping="Wrap"
                                  Text="" VerticalAlignment="Top" 
-                                 Width="245"/>
+                                 Width="150"/>
 
                     </StackPanel>                    
                 </Border>
